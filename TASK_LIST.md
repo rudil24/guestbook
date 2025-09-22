@@ -1,4 +1,3 @@
-0,0 +1,33 @@
 # Guestbook Project: Task List
 
 Based on the PRD, here is the initial breakdown of tasks for the team.
