@@ -3,7 +3,7 @@
 services:
   # Backend Web Service
   - type: web
-    name: guestbook-server
+    name: guestbookapi
     env: node
     plan: free # Use the free tier for the web service
     rootDir: server
@@ -17,8 +17,8 @@ services:
         sync: false # This must be set manually in the Render dashboard
 
   # Frontend Static Site
-  - type: static
-    name: guestbook-client
+  - type: static site
+    name: guestbook
     rootDir: client
     buildCommand: npm install && npm run build
     publishDir: dist
@@ -26,7 +26,7 @@ services:
     routes:
       - type: rewrite
         source: /api/*
-        destination: https://guestbook-server.onrender.com/api/*
+        destination: https://guestbookapi.onrender.com/api/*
     envVars:
       - key: VITE_RECAPTCHA_SITE_KEY
         sync: false # This must be set manually in the Render dashboard
