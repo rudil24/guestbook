@@ -12,8 +12,29 @@ app.use(express.json()); // for parsing application/json
 
 // Database Pool Setup
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
+
+// Set the search_path for every client connection
+pool.on('connect', (client) => {
+  client.query('SET search_path TO guestbook');
+});
+
+// Test the database connection
+try {
+  const client = await pool.connect();
+  console.log('Database connected successfully');
+  const res = await client.query('SHOW search_path');
+  console.log('Search path set to:', res.rows[0].search_path);
+  client.release();
+} catch (err) {
+  console.error('Failed to connect to the database or set search_path.', err.stack);
+  process.exit(1);
+}
 
 // Basic route to confirm server is running
 app.get('/', (req, res) => {
