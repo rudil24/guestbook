@@ -1,4 +1,6 @@
 import './App.css';
+import GuestbookForm from './components/GuestbookForm';
+import MessageList from './components/MessageList';
 
 function App() {
   return (
@@ -8,13 +10,12 @@ function App() {
         <p>Sign our guestbook and leave a message for everyone to see!</p>
       </header>
       <main>
-        {/* The GuestbookForm component will go here */}
+        <GuestbookForm />
         <hr />
-        {/* The MessageList component will go here */}
+        <MessageList messages={[]} />
       </main>
     </div>
   );
 }
 
 export default App;
-
