@@ -1,18 +1,28 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import './GuestbookForm.css';
 
 function GuestbookForm({ onMessageSubmit }) {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
+  const [token, setToken] = useState(null);
+  const recaptchaRef = useRef();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!token) {
+      alert("Please verify you're not a robot.");
+      return;
+    }
 
     // Call the function passed from the parent component
-    await onMessageSubmit({ name, message });
+    await onMessageSubmit({ name, message, token });
 
+    // Reset form and reCAPTCHA after submission
     setName('');
     setMessage('');
+    setToken(null);
+    recaptchaRef.current.reset();
   };
 
   return (
@@ -38,6 +48,11 @@ function GuestbookForm({ onMessageSubmit }) {
           required
         ></textarea>
       </div>
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+        onChange={(value) => setToken(value)}
+      />
       <button type="submit" className="submit-button">
         Sign Guestbook
       </button>
