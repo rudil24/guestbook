@@ -42,7 +42,17 @@ app.get('/', (req, res) => {
 });
 
 // API routes will be added here
-
+app.get('/api/entries', async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      'SELECT * FROM entries ORDER BY created_at DESC'
+    );
+    res.json(rows);
+  } catch (err) {
+    console.error('Error fetching entries:', err.stack);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
