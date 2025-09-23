@@ -22,7 +22,7 @@ services:
     runtime: static
     rootDir: client
     buildCommand: npm install && npm run build
-    publishDir: dist
+    publicDir: dist
     pullRequestPreviewsEnabled: true # Optional: auto-deploy PRs
     routes:
       - type: rewrite
