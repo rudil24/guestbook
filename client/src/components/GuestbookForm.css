@@ -12,7 +12,7 @@
 .form-group label {
   margin-bottom: 5px;
   font-weight: bold;
-  color: #606770;
+  color: var(--secondary-text-color);
 }
 
 .form-group input,
@@ -29,14 +29,14 @@
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #1877f2;
-  box-shadow: 0 0 0 2px #e7f3ff;
+  border-color: var(--focus-border-color);
+  box-shadow: 0 0 0 2px var(--focus-shadow-color);
 }
 
 /* Lighten placeholder text for better readability */
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: #8a8d91;
+  color: var(--placeholder-color);
 }
 
 .form-group textarea {
@@ -45,7 +45,7 @@
 }
 
 .submit-button {
-  background-color: #1877f2;
+  background-color: #5F8D4E;
   color: white;
   border: none;
   padding: 12px 20px;
@@ -58,5 +58,5 @@
 }
 
 .submit-button:hover {
-  background-color: #166fe5;
+  background-color: #A4BE7B;
 }

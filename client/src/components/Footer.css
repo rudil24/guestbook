@@ -2,5 +2,5 @@
   text-align: center;
   padding-top: 20px;
   font-size: 0.9rem;
-  color: #606770;
+  color: var(--secondary-text-color);
 }

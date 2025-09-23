@@ -26,7 +26,7 @@
 
 .message-date {
   font-size: 0.85rem;
-  color: #606770;
+  color: var(--secondary-text-color);
 }
 
 .message-text {
@@ -38,6 +38,6 @@
 
 .no-messages {
   text-align: center;
-  color: #606770;
+  color: var(--secondary-text-color);
   padding: 20px;
 }

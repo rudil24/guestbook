@@ -1,7 +1,11 @@
 :root {
   --container-bg: #ffffff;
-  --header-color: #1c1e21; /* Darker text for headers */
+  --header-color: #285430; /* Dark forest green for headers */
   --border-color: #dddfe2; /* A light border color */
+  --secondary-text-color: #606770;
+  --placeholder-color: #8a8d91;
+  --focus-border-color: #1877f2;
+  --focus-shadow-color: #e7f3ff;
 }
 
 .app-container {
@@ -28,9 +32,19 @@
 
 .app-header p {
   font-size: 1.1rem;
-  color: #606770;
+  color: var(--secondary-text-color);
 }
 
 main {
   padding-top: 20px;
+}
+
+.error-message {
+  color: #d93025;
+  background-color: #fbe9e7;
+  border: 1px solid #d93025;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+  margin-top: 15px;
 }

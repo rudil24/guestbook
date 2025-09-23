@@ -5,11 +5,12 @@ import GuestbookForm from './components/GuestbookForm';
 import MessageList from './components/MessageList';
 import Footer from './components/Footer';
 
-// The server is running on port 3001
-const API_URL = 'http://localhost:3001/api/entries';
+// All API requests will be proxied by Vite's dev server
+const API_URL = '/api/entries';
 
 function App() {
   const [messages, setMessages] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -17,7 +18,8 @@ function App() {
         const response = await axios.get(API_URL);
         setMessages(response.data);
       } catch (error) {
-        console.error('Error fetching messages:', error);
+        console.error("Error fetching messages:", error);
+        setError("Could not load messages. Please try refreshing the page.");
       }
     };
 
@@ -25,13 +27,14 @@ function App() {
   }, []);
 
   const handleMessageSubmit = async (newMessage) => {
+    setError(null); // Clear previous errors on a new attempt
     try {
       const response = await axios.post(API_URL, newMessage);
       // Add the new message to the top of the list for an instant update
       setMessages([response.data, ...messages]);
     } catch (error) {
-      console.error('Error posting message:', error);
-      // Optionally, show an error message to the user
+      console.error("Error posting message:", error);
+      setError(error.response?.data?.error || "Failed to submit message. Please try again.");
     }
   };
 
@@ -43,6 +46,7 @@ function App() {
       </header>
       <main>
         <GuestbookForm onMessageSubmit={handleMessageSubmit} />
+        {error && <p className="error-message">{error}</p>}
         <hr />
         <MessageList messages={messages} />
       </main>

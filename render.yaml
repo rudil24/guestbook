@@ -1,0 +1,32 @@
+# Blueprint for deploying the Guestbook application on Render.com
+
+services:
+  # Backend Web Service
+  - type: web
+    name: guestbook-server
+    env: node
+    plan: free # Use the free tier for the web service
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm run start
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        sync: false # This must be set manually in the Render dashboard
+      - key: RECAPTCHA_SECRET_KEY
+        sync: false # This must be set manually in the Render dashboard
+
+  # Frontend Static Site
+  - type: static
+    name: guestbook-client
+    rootDir: client
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    pullRequestPreviewsEnabled: true # Optional: auto-deploy PRs
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: https://guestbook-server.onrender.com/api/*
+    envVars:
+      - key: VITE_RECAPTCHA_SITE_KEY
+        sync: false # This must be set manually in the Render dashboard
