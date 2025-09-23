@@ -33,6 +33,12 @@
   box-shadow: 0 0 0 2px #e7f3ff;
 }
 
+/* Lighten placeholder text for better readability */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #8a8d91;
+}
+
 .form-group textarea {
   resize: vertical;
   min-height: 80px;
@@ -54,4 +60,3 @@
 .submit-button:hover {
   background-color: #166fe5;
 }
-

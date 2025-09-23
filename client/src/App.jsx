@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import GuestbookForm from './components/GuestbookForm';
 import MessageList from './components/MessageList';
+import Footer from './components/Footer';
 
 // The server is running on port 3001
 const API_URL = 'http://localhost:3001/api/entries';
@@ -45,6 +46,7 @@ function App() {
         <hr />
         <MessageList messages={messages} />
       </main>
+      <Footer />
     </div>
   );
 }

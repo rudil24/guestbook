@@ -1,0 +1,10 @@
+0,0 +1,10 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Book Icon -->
+  <path d="M20 85V15H80V85H20Z" stroke="#333333" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M50 15V85" stroke="#333333" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- Pen Icon -->
+  <path d="M40 30L75 65" stroke="#1877f2" stroke-width="6" stroke-linecap="round"/>
+  <path d="M70 35L65 40" stroke="#1877f2" stroke-width="6" stroke-linecap="round"/>
+</svg>

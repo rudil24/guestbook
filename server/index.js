@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
+import rateLimit from 'express-rate-limit';
 import { Pool } from 'pg';
 
 const app = express();
@@ -12,6 +13,18 @@ app.use(cors({
   origin: 'http://localhost:5173'
 }));
 app.use(express.json()); // for parsing application/json
+
+// Rate limiting to prevent spam and abuse
+const apiLimiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	max: 15, // Limit each IP to 15 requests per window
+	message: 'Too many submissions from this IP, please try again after 15 minutes.',
+	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+
+// Apply the rate limiting middleware to all API routes
+app.use('/api', apiLimiter);
 
 // Database Pool Setup
 const pool = new Pool({
