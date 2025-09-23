@@ -1,8 +1,28 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import './App.css';
 import GuestbookForm from './components/GuestbookForm';
 import MessageList from './components/MessageList';
 
+// The server is running on port 3001
+const API_URL = 'http://localhost:3001/api/entries';
+
 function App() {
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        setMessages(response.data);
+      } catch (error) {
+        console.error('Error fetching messages:', error);
+      }
+    };
+
+    fetchMessages();
+  }, []);
+
   return (
     <div className="app-container">
       <header className="app-header">
@@ -12,7 +32,7 @@ function App() {
       <main>
         <GuestbookForm />
         <hr />
-        <MessageList messages={[]} />
+        <MessageList messages={messages} />
       </main>
     </div>
   );
