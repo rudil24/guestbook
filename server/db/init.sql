@@ -2,11 +2,14 @@
 -- Guestbook Table Schema
 -- =================================================================
 
+-- Create a schema to isolate the guestbook project tables.
+CREATE SCHEMA IF NOT EXISTS guestbook;
+
 -- Drop the table if it already exists to ensure a clean setup.
-DROP TABLE IF EXISTS entries;
+DROP TABLE IF EXISTS guestbook.entries;
 
 -- Create the 'entries' table to store guestbook messages.
-CREATE TABLE entries (
+CREATE TABLE guestbook.entries (
     -- 'id' is the primary key, using BIGSERIAL for an auto-incrementing 64-bit integer.
     -- This provides a unique identifier for each entry.
     id BIGSERIAL PRIMARY KEY,
