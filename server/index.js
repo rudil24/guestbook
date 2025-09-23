@@ -56,10 +56,23 @@ app.get('/api/entries', async (req, res) => {
 
 app.post('/api/entries', async (req, res) => {
   const { name, message } = req.body;
+
+  // Validate input: ensure name and message are non-empty strings
+  if (
+    !name ||
+    typeof name !== 'string' ||
+    name.trim() === '' ||
+    !message ||
+    typeof message !== 'string' ||
+    message.trim() === ''
+  ) {
+    return res.status(400).json({ error: 'Name and message are required and must be non-empty strings.' });
+  }
+
   try {
     const { rows } = await pool.query(
       'INSERT INTO entries (name, message) VALUES ($1, $2) RETURNING *',
-      [name, message]
+      [name.trim(), message.trim()]
     );
     res.status(201).json(rows[0]);
   } catch (err) {
