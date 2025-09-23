@@ -53,6 +53,20 @@ app.get('/api/entries', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+app.post('/api/entries', async (req, res) => {
+  const { name, message } = req.body;
+  try {
+    const { rows } = await pool.query(
+      'INSERT INTO entries (name, message) VALUES ($1, $2) RETURNING *',
+      [name, message]
+    );
+    res.status(201).json(rows[0]);
+  } catch (err) {
+    console.error('Error creating entry:', err.stack);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
