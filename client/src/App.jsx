@@ -23,6 +23,17 @@ function App() {
     fetchMessages();
   }, []);
 
+  const handleMessageSubmit = async (newMessage) => {
+    try {
+      const response = await axios.post(API_URL, newMessage);
+      // Add the new message to the top of the list for an instant update
+      setMessages([response.data, ...messages]);
+    } catch (error) {
+      console.error('Error posting message:', error);
+      // Optionally, show an error message to the user
+    }
+  };
+
   return (
     <div className="app-container">
       <header className="app-header">
@@ -30,7 +41,7 @@ function App() {
         <p>Sign our guestbook and leave a message for everyone to see!</p>
       </header>
       <main>
-        <GuestbookForm />
+        <GuestbookForm onMessageSubmit={handleMessageSubmit} />
         <hr />
         <MessageList messages={messages} />
       </main>

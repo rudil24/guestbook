@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import './GuestbookForm.css';
 
-function GuestbookForm() {
+function GuestbookForm({ onMessageSubmit }) {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Submission logic will be added in a future step
-    console.log('Submitting:', { name, message });
-    // Reset form after submission
+
+    // Call the function passed from the parent component
+    await onMessageSubmit({ name, message });
+
     setName('');
     setMessage('');
   };
@@ -45,4 +46,3 @@ function GuestbookForm() {
 }
 
 export default GuestbookForm;
-
