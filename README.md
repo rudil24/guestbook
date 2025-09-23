@@ -25,6 +25,7 @@ See [TASK_LIST.md](TASK_LIST.md)
 ## Reflection
 |   |   |
 |---|---|
+| 23-sep-2025 5pm  | welp. Gemini totally hallucinates on render.yaml files. like every other parameter is wrong to the point of making up words that aren't parameters at all. so i get to dive into render blueprint specs for rest of evening. cool!
 | 23-sep-2025 3pm  | kicking myself for not building up and invoking Agent Stella's accessibility credentials. Will upgrade her persona for the next project to be an Accessibility hound.
 | 23-sep-2025 11am | local manual testing is flawless; but Agent Vera and Playwright can't get automated tests to work anymore since the component refactor, suffering from db and server timeouts that she and the team have tried to refactor multiple ways. SO i'm pulling the plug on automated testing, will do that part manually myself. We'll shoot for better automation flow on the next project. |
 | 22-sep-2025 11pm | Not so fun was setting up the test suite, my agent recommended Playwright which worked flawlessly but then choked when Agent Sentinel added the Captcha pieces and Agent Cap did some refactoring to make the api pathing more robust. | 
