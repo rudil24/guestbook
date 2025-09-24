@@ -22,6 +22,9 @@ app.use(cors({
 }));
 app.use(express.json()); // for parsing application/json
 
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
 // Rate limiting to prevent spam and abuse
 const apiLimiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
@@ -49,9 +52,9 @@ try {
 // Mount the routers
 app.use('/api/entries', entriesRouter);
 
-// Health check endpoint for Render
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok' });
+// All other GET requests not handled before will return the React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 });
 
 app.listen(port, () => {
