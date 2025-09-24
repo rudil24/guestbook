@@ -13,6 +13,9 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 const app = express();
+
+// Trust the first proxy in front of the app (Render's reverse proxy)
+app.set('trust proxy', 1);
 const port = process.env.PORT || 3001;
 
 // Middleware

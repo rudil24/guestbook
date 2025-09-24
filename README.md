@@ -17,7 +17,7 @@ An extremely simple "sign my guestbook" one page app, **BUT** built 100% via AI 
 
 
 ## To Run
-Simply open your browser to <tbd Render link>. Project is full stack deployed to Render free tier.
+Simply open your browser to [https://guestbook-5po9.onrender.com/](https://guestbook-5po9.onrender.com/). The guestbook project is full stack deployed to Render free tier.
 
 ## Development Workflow
 See [TASK_LIST.md](TASK_LIST.md)
@@ -25,8 +25,9 @@ See [TASK_LIST.md](TASK_LIST.md)
 ## Reflection
 |   |   |
 |---|---|
-| 23-sep-2025 6pm
-| 23-sep-2025 5pm  | welp. Gemini totally hallucinates on render.yaml files. like every other parameter is wrong to the point of making up words that aren't parameters at all. so i get to dive into render blueprint specs for rest of evening. cool!
+| 23-sep-2025 8pm  | got a deploy up using the Arpan method! but we forgot to initialize our db schema so we revised and redeployed. Success! 
+| 23-sep-2025 6pm  | i showed Gemini the youtube vids i WANTED to use, to deploy PERN apps to Render.com, (linked in references below,) if i was building this on my own. Gemini liked it so much he pivoted the project, and now calls it the Arpan Neupane method. lol.
+| 23-sep-2025 5pm  | welp. Gemini 2.5 Pro totally hallucinates on render.yaml files. many, many parameters in that file are wrong to the point of making up words that aren't parameters at all. so i get to dive into render blueprint specs for rest of evening. cool!
 | 23-sep-2025 3pm  | kicking myself for not building up and invoking Agent Stella's accessibility credentials. Will upgrade her persona for the next project to be an Accessibility hound.
 | 23-sep-2025 11am | local manual testing is flawless; but Agent Vera and Playwright can't get automated tests to work anymore since the component refactor, suffering from db and server timeouts that she and the team have tried to refactor multiple ways. SO i'm pulling the plug on automated testing, will do that part manually myself. We'll shoot for better automation flow on the next project. |
 | 22-sep-2025 11pm | Not so fun was setting up the test suite, my agent recommended Playwright which worked flawlessly but then choked when Agent Sentinel added the Captcha pieces and Agent Cap did some refactoring to make the api pathing more robust. | 
@@ -38,4 +39,7 @@ See [TASK_LIST.md](TASK_LIST.md)
 
 
 ## References
-[Full Chat Log](https://g.co/gemini/share/024bbec3847e) from inception to finish of this project with Gemini 2.5 as the guide on the side.
+* [Arpan Neupane on YouTube #1: How to Create a Express/Node + React Project with Vite | Node Backend + React Frontend](https://www.youtube.com/watch?v=mKmxc8TcWQ8)
+* [Arpan Neupane on YouTube #2: How to Bundle a React Frontend with an Express/Node Backend for Deployment](https://www.youtube.com/watch?v=1NhduUZHZEQ)
+* [Arpan Neupane on YouTube #3: How to Deploy a Node/Express App to Render | Node/Express Render Deployment](https://www.youtube.com/watch?v=tNpoc86cHrQ)
+* [Full Project Chat Log](https://g.co/gemini/share/024bbec3847e) all prompts and answers from inception to finish of this project with Gemini 2.5 as the guide on the side.
