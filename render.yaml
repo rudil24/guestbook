@@ -5,16 +5,16 @@ services:
   - type: web
     name: guestbookapi
     env: node
-    plan: free # Use the free tier for the web service
+    plan: free
     rootDir: server
-    buildCommand: npm install
-    startCommand: npm run start
+    buildCommand: "npm install"
+    startCommand: "npm run start"
     healthCheckPath: /health
     envVars:
       - key: DATABASE_URL
-        sync: false # This must be set manually in the Render dashboard
+        sync: false
       - key: RECAPTCHA_SECRET_KEY
-        sync: false # This must be set manually in the Render dashboard
+        sync: false
 
   # Frontend Static Site
   - type: web
@@ -22,13 +22,12 @@ services:
     runtime: static
     rootDir: client
     build:
-      buildCommand: npm install && npm run build
-      publishDir: ./dist
-    pullRequestPreviewsEnabled: true # Optional: auto-deploy PRs
+      buildCommand: "npm install && npm run build"
+      publishDir: "./dist"
     routes:
       - type: rewrite
         source: /api/*
         destination: https://guestbookapi.onrender.com/api/*
     envVars:
       - key: VITE_RECAPTCHA_SITE_KEY
-        sync: false # This must be set manually in the Render dashboard
+        sync: false
