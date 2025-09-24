@@ -21,8 +21,9 @@ services:
     name: guestbook
     runtime: static
     rootDir: client
-    buildCommand: npm install && npm run build
-    publishPath: ./dist
+    build:
+      buildCommand: npm install && npm run build
+      publishDir: ./dist
     pullRequestPreviewsEnabled: true # Optional: auto-deploy PRs
     routes:
       - type: rewrite
