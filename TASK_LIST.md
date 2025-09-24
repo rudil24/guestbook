@@ -48,8 +48,8 @@ This document reflects the full scope of work completed for the project's first 
 - [x] **Team:** Conduct final manual testing of all user flows.
 
 ## Phase 6: Deploy on Render.com
-- [ ] **Vera:** Create the `render.yaml` file for deployment.
-- [ ] **Team:** Create the new application and database services on Render.com.
-- [ ] **Team:** Configure environment variables (DATABASE_URL, reCAPTCHA keys) in Render.
-- [ ] **Team:** Push to GitHub to trigger the first deployment.
-- [ ] **Team:** Conduct post-deployment manual testing on the live URL.
+- [x] **Vera:** Create the `render.yaml` file for deployment.
+- [x] **Team:** Create the new application and database services on Render.com.
+- [x] **Team:** Configure environment variables (DATABASE_URL, reCAPTCHA keys) in Render.
+- [x] **Team:** Push to GitHub to trigger the first deployment.
+- [x] **Team:** Conduct post-deployment manual testing on the live URL.
